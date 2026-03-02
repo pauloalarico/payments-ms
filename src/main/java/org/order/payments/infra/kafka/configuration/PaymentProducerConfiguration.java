@@ -42,7 +42,7 @@ public class PaymentProducerConfiguration {
         configs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JacksonJsonSerializer.class);
         configs.put(ProducerConfig.ACKS_CONFIG, "all");
         configs.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);
-        configs.put(JacksonJsonDeserializer.TYPE_MAPPINGS, mapping);
+        configs.put(JacksonJsonSerializer.TYPE_MAPPINGS, mapping);
         return new DefaultKafkaProducerFactory<>(configs);
     }
 
