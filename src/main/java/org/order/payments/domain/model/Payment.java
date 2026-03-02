@@ -13,6 +13,7 @@ import java.util.UUID;
 @Getter
 public class Payment {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "cd_payment", unique = true)
     private UUID paymentId;
     @Column(name = "cd_costumer")
