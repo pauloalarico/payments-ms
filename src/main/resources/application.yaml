@@ -28,4 +28,7 @@ apps:
     groupId: ${KAFKA_GROUP_ID}
     server: ${KAFKA_SERVER}
     mapping: ${NEW_PAYMENT_MAPPING}
+    trust-package: ${PAYMENT_TRUST_PACKAGE}
 
+server:
+  port: 8085
