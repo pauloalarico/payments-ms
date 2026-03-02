@@ -1,9 +1,12 @@
 package org.order.payments.infra.kafka.configuration;
 
+import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.admin.NewTopic;
+import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.kafka.autoconfigure.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
@@ -17,16 +20,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@ConfigurationProperties(prefix = "apps.kafka")
+@RequiredArgsConstructor
 public class PaymentProducerConfiguration {
+    @Value("${apps.kafka.paymentTopic}")
     private String paymentTopic;
+    @Value("${apps.kafka.groupId}")
     private String groupId;
+    @Value("${spring.kafka.bootstrap-servers}")
     private String server;
+    @Value("${apps.kafka.mapping}")
     private String mapping;
+
+    private final KafkaProperties kafkaProperties;
 
     @Bean
     public ProducerFactory<String, Object> producerFactory() {
-        Map<String, Object> configs = new HashMap<>();
+        Map<String, Object> configs = new HashMap<>(kafkaProperties.buildProducerProperties());
         configs.put(ProducerConfig.CLIENT_ID_CONFIG, groupId);
         configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, server);
         configs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
