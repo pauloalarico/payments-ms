@@ -18,10 +18,12 @@ public class ProcessAntiFraudUseCase {
 
         if (status == PaymentStatus.APPROVED) {
             payment.approve();
+            paymentRepository.save(payment);
         }
 
         if (status == PaymentStatus.REPROVED) {
             payment.reprove();
+            paymentRepository.save(payment);
         }
     }
 
