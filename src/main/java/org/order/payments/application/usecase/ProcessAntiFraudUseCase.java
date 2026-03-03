@@ -1,5 +1,6 @@
 package org.order.payments.application.usecase;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.order.payments.application.dto.request.AntiFraudDecisionMessage;
 import org.order.payments.application.dto.request.PaymentStatus;
@@ -12,6 +13,7 @@ public class ProcessAntiFraudUseCase {
 
     private final PaymentRepository paymentRepository;
 
+    @Transactional
     public void process(AntiFraudDecisionMessage message) {
         var payment = paymentRepository.findPaymentByCorrelationId(message.correlationId());
         PaymentStatus status = message.paymentStatus();
