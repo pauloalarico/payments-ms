@@ -42,4 +42,12 @@ public class Payment {
         payment.event = EventPayment.PAYMENT_REQUESTED;
         return payment;
     }
+
+    public void approve() {
+        this.event = EventPayment.PAYMENT_APPROVED;
+    }
+
+    public void reprove() {
+        this.event = EventPayment.PAYMENT_REPROVED;
+    }
 }
