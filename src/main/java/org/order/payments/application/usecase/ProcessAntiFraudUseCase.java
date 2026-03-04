@@ -3,9 +3,11 @@ package org.order.payments.application.usecase;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.order.payments.application.dto.request.AntiFraudDecisionMessage;
-import org.order.payments.application.dto.request.PaymentStatus;
+import org.order.payments.domain.enums.PaymentStatus;
 import org.order.payments.domain.repository.PaymentRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -15,7 +17,7 @@ public class ProcessAntiFraudUseCase {
 
     @Transactional
     public void process(AntiFraudDecisionMessage message) {
-        var payment = paymentRepository.findPaymentByCorrelationId(message.correlationId());
+        var payment = paymentRepository.findPaymentByCorrelationId(UUID.fromString(message.correlationId()));
         PaymentStatus status = message.paymentStatus();
 
         if (status == PaymentStatus.APPROVED) {
