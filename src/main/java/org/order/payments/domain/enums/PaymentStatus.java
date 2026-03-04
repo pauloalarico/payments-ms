@@ -1,4 +1,4 @@
-package org.order.payments.application.dto.request;
+package org.order.payments.domain.enums;
 
 public enum PaymentStatus {
     APPROVED,
