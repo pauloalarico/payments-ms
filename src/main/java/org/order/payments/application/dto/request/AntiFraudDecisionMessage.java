@@ -2,6 +2,7 @@ package org.order.payments.application.dto.request;
 
 
 import org.order.payments.domain.enums.MethodPayment;
+import org.order.payments.domain.enums.PaymentStatus;
 
 import java.math.BigDecimal;
 
