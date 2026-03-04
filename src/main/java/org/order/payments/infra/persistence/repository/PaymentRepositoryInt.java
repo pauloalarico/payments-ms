@@ -12,10 +12,10 @@ public interface PaymentRepositoryInt extends JpaRepository<Payment, UUID> {
     @Query("""
             select p from Payment p WHERE p.paymentId = :id
             """)
-    Optional<Payment> findPaymentByPaymentId(@Param("id")String id);
+    Optional<Payment> findPaymentByPaymentId(@Param("id")UUID id);
 
     @Query("""
             select p from Payment p WHERE p.correlationId = :id
             """)
-    Optional<Payment> findPaymentByCorrelationId(@Param("id") String id);
+    Optional<Payment> findPaymentByCorrelationId(@Param("id") UUID id);
 }

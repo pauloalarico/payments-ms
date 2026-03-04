@@ -6,6 +6,8 @@ import org.order.payments.domain.model.Payment;
 import org.order.payments.domain.repository.PaymentRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.UUID;
+
 @Repository
 @RequiredArgsConstructor
 public class PaymentRepositoryImpl implements PaymentRepository {
@@ -18,12 +20,12 @@ public class PaymentRepositoryImpl implements PaymentRepository {
     }
 
     @Override
-    public Payment findPaymentByPaymentId(String id) {
+    public Payment findPaymentByPaymentId(UUID id) {
         return repository.findPaymentByPaymentId(id).orElseThrow(() -> new EntityNotFoundException("Cannot found payment"));
     }
 
     @Override
-    public Payment findPaymentByCorrelationId(String id) {
+    public Payment findPaymentByCorrelationId(UUID id) {
         return repository.findPaymentByCorrelationId(id).orElseThrow(() -> new EntityNotFoundException("Correlation Id does not exists!"));
     }
 }
