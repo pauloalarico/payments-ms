@@ -30,6 +30,7 @@ apps:
     mapping: ${NEW_PAYMENT_MAPPING}
     trust-package: ${PAYMENT_TRUST_PACKAGE:org.order.payments.application.dto.request}
     listener-antifraud: ${TOPIC_ANTI_FRAUD}
+    mapping-antifraud: ${ANTI_FRAUD_RESPONSE}
 
 server:
   port: 8085

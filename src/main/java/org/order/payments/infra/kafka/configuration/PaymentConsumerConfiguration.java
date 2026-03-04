@@ -22,7 +22,7 @@ public class PaymentConsumerConfiguration {
     @Value("${spring.kafka.bootstrap-servers}")
     private String server;
 
-    @Value("${apps.kafka.mapping}")
+    @Value("${apps.kafka.mapping-antifraud}")
     private String mapping;
 
     @Value("${apps.kafka.trust-package}")
@@ -43,7 +43,7 @@ public class PaymentConsumerConfiguration {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Object> listenerContainerFactory(ConsumerFactory<String, Object> consumerFactory) {
+    public ConcurrentKafkaListenerContainerFactory<String, Object> kafkaListenerContainerFactory (ConsumerFactory<String, Object> consumerFactory) {
         var factory = new ConcurrentKafkaListenerContainerFactory<String, Object>();
         factory.setConsumerFactory(consumerFactory);
         factory.getContainerProperties().setAckMode(ContainerProperties.AckMode.MANUAL_IMMEDIATE);
