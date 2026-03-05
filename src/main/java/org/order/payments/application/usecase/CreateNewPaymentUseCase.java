@@ -1,5 +1,6 @@
 package org.order.payments.application.usecase;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.order.payments.application.dto.request.NewPaymentDTO;
 import org.order.payments.application.dto.response.PaymentCreatedResponse;
@@ -19,6 +20,7 @@ public class CreateNewPaymentUseCase {
     private final PaymentCreateResponseMapper mapper;
     private final PaymentProducer producer;
 
+    @Transactional
     public PaymentCreatedResponse createNewPayment(NewPaymentDTO dto) {
         String customerId = dto.consumerId();
         BigDecimal amount = dto.amount();
