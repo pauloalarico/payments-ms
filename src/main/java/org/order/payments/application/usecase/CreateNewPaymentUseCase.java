@@ -1,6 +1,6 @@
 package org.order.payments.application.usecase;
 
-import jakarta.transaction.Transactional;
+
 import lombok.RequiredArgsConstructor;
 import org.order.payments.application.dto.request.NewPaymentDTO;
 import org.order.payments.application.dto.response.PaymentCreatedResponse;
@@ -10,6 +10,7 @@ import org.order.payments.domain.repository.PaymentRepository;
 import org.order.payments.infra.kafka.producer.PaymentProducer;
 import org.order.payments.infra.mapper.PaymentCreateResponseMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
