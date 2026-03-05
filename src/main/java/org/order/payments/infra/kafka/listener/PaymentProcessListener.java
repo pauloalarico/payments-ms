@@ -2,7 +2,7 @@ package org.order.payments.infra.kafka.listener;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.order.payments.application.dto.request.AntiFraudDecisionMessage;
+import org.order.payments.application.dto.messaging.AntiFraudDecisionMessage;
 import org.order.payments.application.usecase.ProcessAntiFraudUseCase;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;

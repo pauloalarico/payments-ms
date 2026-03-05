@@ -2,7 +2,7 @@ package org.order.payments.application.usecase;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.order.payments.application.dto.request.AntiFraudDecisionMessage;
+import org.order.payments.application.dto.messaging.AntiFraudDecisionMessage;
 import org.order.payments.domain.enums.PaymentStatus;
 import org.order.payments.domain.repository.PaymentRepository;
 import org.springframework.stereotype.Service;
@@ -23,9 +23,8 @@ public class ProcessAntiFraudUseCase {
         if (status == PaymentStatus.APPROVED) {
             payment.approve();
             paymentRepository.save(payment);
-        }
 
-        if (status == PaymentStatus.REPROVED) {
+        } else {
             payment.reprove();
             paymentRepository.save(payment);
         }
