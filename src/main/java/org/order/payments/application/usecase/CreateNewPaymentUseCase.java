@@ -20,11 +20,11 @@ public class CreateNewPaymentUseCase {
     private final PaymentProducer producer;
 
     public PaymentCreatedResponse createNewPayment(NewPaymentDTO dto) {
-        String costumerId = dto.consumerId();
+        String customerId = dto.consumerId();
         BigDecimal amount = dto.amount();
         MethodPayment method = dto.methodPayment();
 
-        var payment = Payment.create(costumerId, amount, method);
+        var payment = Payment.create(customerId, amount, method);
         repository.save(payment);
 
         PaymentCreatedResponse responseDto = mapper.toDto(payment);

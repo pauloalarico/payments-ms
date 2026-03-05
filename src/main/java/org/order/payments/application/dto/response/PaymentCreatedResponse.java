@@ -11,7 +11,7 @@ public record PaymentCreatedResponse (
         EventPayment eventPayment,
         UUID paymentId,
         UUID correlationId,
-        UUID costumerId,
+        UUID customerId,
         BigDecimal amount,
         MethodPayment methodPayment,
         ZonedDateTime createdAt

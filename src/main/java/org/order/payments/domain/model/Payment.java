@@ -16,8 +16,8 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "cd_payment", unique = true)
     private UUID paymentId;
-    @Column(name = "cd_costumer")
-    private UUID costumerId;
+    @Column(name = "cd_customer")
+    private UUID customer;
     @Column(name = "cd_correlation", unique = true)
     private UUID correlationId;
     @Column(name = "vl_amount")
@@ -32,10 +32,10 @@ public class Payment {
     private ZonedDateTime createdAt;
 
 
-    public static Payment create(String costumerId, BigDecimal amount, MethodPayment method) {
+    public static Payment create(String customerId, BigDecimal amount, MethodPayment method) {
         var payment = new Payment();
         payment.correlationId = UUID.randomUUID();
-        payment.costumerId = UUID.fromString(costumerId);
+        payment.customer = UUID.fromString(customerId);
         payment.amount = amount;
         payment.method = method;
         payment.createdAt = ZonedDateTime.now();

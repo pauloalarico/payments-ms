@@ -16,7 +16,7 @@ public class PaymentCreateResponseMapper {
         EventPayment eventPayment = payment.getEvent();
         UUID paymentId = payment.getPaymentId();
         UUID correlationId = payment.getCorrelationId();
-        UUID costumerId = payment.getCostumerId();
+        UUID customerId = payment.getCustomer();
         BigDecimal amount = payment.getAmount();
         MethodPayment method = payment.getMethod();
         ZonedDateTime createdAt = payment.getCreatedAt();
@@ -25,7 +25,7 @@ public class PaymentCreateResponseMapper {
                 eventPayment,
                 paymentId,
                 correlationId,
-                costumerId,
+                customerId,
                 amount,
                 method,
                 createdAt
