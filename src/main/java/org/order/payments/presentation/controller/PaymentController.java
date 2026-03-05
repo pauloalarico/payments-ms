@@ -1,4 +1,4 @@
-package org.order.payments.presentation;
+package org.order.payments.presentation.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ public class PaymentController {
     @PostMapping
     public ResponseEntity<PaymentCreatedResponse> create(@Valid @RequestBody NewPaymentDTO dto, UriComponentsBuilder ucb) {
         var dtoResponse = createNewPayment.createNewPayment(dto);
-        var uri = ucb.path("/payments/{id}").buildAndExpand(dtoResponse.hashCode()).toUri();
+        var uri = ucb.path("/payments/{id}").buildAndExpand(dtoResponse.paymentId()).toUri();
         return ResponseEntity.created(uri).body(dtoResponse);
     }
 }
