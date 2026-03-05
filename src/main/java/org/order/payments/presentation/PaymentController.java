@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/payments")
@@ -19,8 +20,9 @@ public class PaymentController {
     private final CreateNewPaymentUseCase createNewPayment;
 
     @PostMapping
-    public ResponseEntity<PaymentCreatedResponse> create(@Valid @RequestBody NewPaymentDTO dto) {
+    public ResponseEntity<PaymentCreatedResponse> create(@Valid @RequestBody NewPaymentDTO dto, UriComponentsBuilder ucb) {
         var dtoResponse = createNewPayment.createNewPayment(dto);
-        return ResponseEntity.ok(dtoResponse);
+        var uri = ucb.path("/payments/{id}").buildAndExpand(dtoResponse.hashCode()).toUri();
+        return ResponseEntity.created(uri).body(dtoResponse);
     }
 }
