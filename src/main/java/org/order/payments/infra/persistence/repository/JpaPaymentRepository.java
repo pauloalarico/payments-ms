@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface PaymentRepositoryInt extends JpaRepository<Payment, UUID> {
+public interface JpaPaymentRepository extends JpaRepository<Payment, UUID> {
     @Query("""
             select p from Payment p WHERE p.paymentId = :id
             """)
