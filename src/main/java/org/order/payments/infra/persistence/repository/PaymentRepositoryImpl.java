@@ -12,7 +12,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class PaymentRepositoryImpl implements PaymentRepository {
 
-    private final PaymentRepositoryInt repository;
+    private final JpaPaymentRepository repository;
 
     @Override
     public Payment save(Payment payment) {
