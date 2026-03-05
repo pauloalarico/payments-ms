@@ -2,7 +2,7 @@ package org.order.payments.application.usecase;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.order.payments.application.dto.messaging.AntiFraudDecisionMessage;
+import org.order.payments.application.messaging.AntiFraudDecisionMessage;
 import org.order.payments.domain.enums.PaymentStatus;
 import org.order.payments.domain.repository.PaymentRepository;
 import org.springframework.stereotype.Service;

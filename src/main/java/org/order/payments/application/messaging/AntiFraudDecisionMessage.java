@@ -1,4 +1,4 @@
-package org.order.payments.application.dto.messaging;
+package org.order.payments.application.messaging;
 
 
 import org.order.payments.domain.enums.MethodPayment;
